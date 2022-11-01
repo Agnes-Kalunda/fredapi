@@ -8,11 +8,11 @@ class Plotly extends React.Component {
     }
     // defining callback url
     
-    componentDidMount(){
-        fetch('https://api.stlouisfed.org/fred/series/observations?series_id=GDP&api_key=644cd67ebf8d504be3973f6b815a4ac9&file_type=json')
-            .then(response => response.json())
-            .then(response => this.setState({'start': response.start}))
-    }
+    // componentDidMount(){
+    //     fetch('https://api.stlouisfed.org/fred/series/observations?series_id=GDP&api_key=644cd67ebf8d504be3973f6b815a4ac9&file_type=json')
+    //         .then(response => response.json())
+    //         .then(response => this.setState({'start': response.start}))
+    // }
 
     render(){
         return (
