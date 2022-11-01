@@ -49,7 +49,7 @@ def home():
 
 @app.get("/series")
 def fredData():
-    data =requests.get(callback_url).json()
+    data =requests.get(callback_url).json()['observations']
 
 
     print(data)
