@@ -44,7 +44,7 @@ def home():
 
 
 @app.get("/series")
-def fredData():
+def fredData(series_ID: str,observation_start:float, observation_end:float):
     data =requests.get(callback_url).json()['observations']
 
 
