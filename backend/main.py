@@ -46,16 +46,14 @@ def home():
 @app.get("/series")
 def fredData(series_ID: str,observation_start:str, observation_end:str):
     data =requests.get(callback_url).json()['observations']
-
-
     print(data)
-
-   
     return data
 
 
+
+
 # #gets specific values from callback_url
-@app.get("/series")
+@app.get("/series/specific")
 def getData():
     Data_results = []
 
