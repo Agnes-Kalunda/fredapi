@@ -8,10 +8,6 @@ from fastapi.encoders import jsonable_encoder
 # import pandas as pd
 
 
-
-
-
-
 app = FastAPI()
 
 #hardcoded apiKey
