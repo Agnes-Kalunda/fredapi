@@ -16,7 +16,7 @@ apiKey = '644cd67ebf8d504be3973f6b815a4ac9'
 
 
 
-callback_url="https://api.stlouisfed.org/fred/series/observations?series_id=GDP&api_key=644cd67ebf8d504be3973f6b815a4ac9&file_type=json&observation_start=2010-02-02&observation_end=2022-02-02&units=pc1"
+callback_url="https://api.stlouisfed.org/fred/series/observations?series_id={seriesID}&api_key=644cd67ebf8d504be3973f6b815a4ac9&file_type=json&realtime_start=2010-02-02&value={value}&realtime_end=2022-02-02&units=pc1&date={date}"
 # seriesID = "GDP"
 
 app.add_middleware(
@@ -54,7 +54,7 @@ def fredData(series_ID: str,observation_start:str, observation_end:str):
     return data
 
 
-#gets specific values from callback_url
+# #gets specific values from callback_url
 @app.get("/series")
 def getData():
     Data_results = []
@@ -63,8 +63,9 @@ def getData():
         series_id = data.get("series.id")
         observation_start= data.get('observation_start')
         observation_end = data.get('observation_end')
+        value= data.get('value')
 
-        DataFred_object = data(series_id, observation_start,observation_end)
+        DataFred_object = data(series_id, observation_start,observation_end,value)
         Data_results.append(DataFred_object)
 
     return Data_results

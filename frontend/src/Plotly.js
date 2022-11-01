@@ -22,8 +22,8 @@ class Plotly extends React.Component {
                     data={[
                         {type: 'scatter',
                          mode: 'lines',
-                         x : [{}],
-                         y:[{}],
+                         x : {value},
+                         y:{date},
                          marker: {color:'blue'}}
                     ]}
                     layout ={{width: 1100 , height: 800, title: 'hjgvjhkgvhvjfuj'}}
