@@ -44,12 +44,10 @@ def home():
 
 
 @app.get("/series")
-def fredData(series_ID: str,observation_start:str, observation_end:str):
+def fredData(series_ID: str,realtime_start:str, realtime_end:str):
     data =requests.get(callback_url).json()['observations']
     print(data)
     return data
-
-
 
 
 # #gets specific values from callback_url
@@ -59,11 +57,11 @@ def getData():
 
     for Data in data:
         series_id = data.get("series.id")
-        observation_start= data.get('observation_start')
-        observation_end = data.get('observation_end')
+        realtime_start= data.get('realtime_start')
+        realtime_end = data.get('realtime_end')
         value= data.get('value')
 
-        DataFred_object = data(series_id, observation_start,observation_end,value)
+        DataFred_object = data( series_id, realtime_start,realtime_end,value)
         Data_results.append(DataFred_object)
 
     return Data_results
