@@ -1,10 +1,10 @@
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
-import json
 from pydantic import BaseModel
 # from typing import Optional, List , Dict
 import requests
 from fastapi.encoders import jsonable_encoder
+import json
 # import pandas as pd
 
 
@@ -16,7 +16,7 @@ apiKey = '644cd67ebf8d504be3973f6b815a4ac9'
 
 
 
-callback_url="https://api.stlouisfed.org/fred/series/observations?series_id={seriesID}&api_key=644cd67ebf8d504be3973f6b815a4ac9&file_type=json&realtime_start=2010-02-02&value={value}&realtime_end=2022-02-02&units=pc1&date={date}"
+callback_url="https://api.stlouisfed.org/fred/series/observations?series_id=GDP&api_key=644cd67ebf8d504be3973f6b815a4ac9&file_type=json&observation_start=2010-02-02&observation_end=2022-02-02&units=pc1"
 # seriesID = "GDP"
 
 app.add_middleware(
@@ -44,25 +44,45 @@ def home():
 
 
 @app.get("/series")
-def fredData(series_ID: str,realtime_start:str, realtime_end:str):
-    data =requests.get(callback_url).json()['observations']
-    print(data)
-    return data
+def fredData():
+    data =requests.get(callback_url).json()['observations'] 
+
+    # print(data)
+    array1 = [] 
+    array1=(data)
+
+    
+
+    array2 = [] 
+
+    
+    
+
+
+    for x in array1:
+        array1 = (x ['value'] , x['date'])
+        print(array1)
+
+        array2 = array1
+    # for i in range(len(array1)):
+    #     print (array1[i])
+    
+    return array2
 
 
 # #gets specific values from callback_url
-@app.get("/series/specific")
-def getData():
-    Data_results = []
+# @app.get("/series/specific")
+# def getData():
+#     Data_results = []
 
-    for Data in data:
-        series_id = data.get("series.id")
-        realtime_start= data.get('realtime_start')
-        realtime_end = data.get('realtime_end')
-        value= data.get('value')
+#     for Data in data:
+#         series_id = data.get("series.id")
+#         realtime_start= data.get('realtime_start')
+#         realtime_end = data.get('realtime_end')
+#         value= data.get('value')
 
-        DataFred_object = data( series_id, realtime_start,realtime_end,value)
-        Data_results.append(DataFred_object)
+#         DataFred_object = data( series_id, realtime_start,realtime_end,value)
+#         Data_results.append(DataFred_object)
 
-    return Data_results
+#     return Data_results
    
