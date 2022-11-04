@@ -10,7 +10,9 @@ class Plotly extends React.Component {
 
     // defining backend fetch
     componentDidMount(){
-        fetch('http://localhost:8000')
+        fetch('http://127.0.0.1:8000',{
+            credentials: 'include'
+        })
             .then(response => response.json())
             .then(response => this.setState({'array1': response.array1})
             )
