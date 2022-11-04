@@ -6,13 +6,15 @@ class Plotly extends React.Component {
         super(props);
         this.state = {data: []}
     }
-    // defining callback url
     
-    // componentDidMount(){
-    //     fetch('https://api.stlouisfed.org/fred/series/observations?series_id=GDP&api_key=644cd67ebf8d504be3973f6b815a4ac9&file_type=json')
-    //         .then(response => response.json())
-    //         .then(response => this.setState({'start': response.start}))
-    // }
+
+    // defining backend fetch
+    componentDidMount(){
+        fetch('http://localhost:8000')
+            .then(response => response.json())
+            .then(response => this.setState({'array1': response.array1})
+            )
+    }
 
     render(){
         return (
@@ -22,8 +24,8 @@ class Plotly extends React.Component {
                     data={[
                         {type: 'scatter',
                          mode: 'lines',
-                         x : [array1.value],
-                         y:[array1.date],
+                         x : [],
+                         y:[],
                          marker: {color:'blue'}}
                     ]}
                     layout ={{width: 1100 , height: 800, title: 'hjgvjhkgvhvjfuj'}}
