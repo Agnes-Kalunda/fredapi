@@ -47,24 +47,24 @@ def home():
 def fredData(series_id: str):
     data =requests.get(callback_url).json()['observations'] 
 
-    return data
+    # return data
     # print(data)
-    # array1 = [] 
-    # array1=(data)
+    array1 = [] 
+    array1=(data)
 
 
-    # array2 = [] 
+    array2 = [] 
 
 
-    # for x in array1:
-    #     array1 = (x ['value'] , x['date'])
-    #     print(array1)
+    for x in array1:
+        array1 = (x ['value'] , x['date'])
+        print(array1)
 
-    #     array2 = array1
-    # # for i in range(len(array1)):
-    # #     print (array1[i])
+        array2 = array1
+    # for i in range(len(array1)):
+    #     print (array1[i])
     
-    # return array2
+    return array2
 
 
 # #gets specific values from callback_url
