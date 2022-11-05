@@ -6,15 +6,14 @@ class Plotly extends React.Component {
         super(props);
         this.state = {data: []}
     }
+
     
 
     // defining backend fetch
     componentDidMount(){
-        fetch('http://127.0.0.1:8000',{
-            credentials: 'include'
-        })
+        fetch('http://127.0.0.1:8000/series',)
             .then(response => response.json())
-            .then(response => this.setState({'array1': response.array1})
+            .then(response => this.setState({'data': response})
             )
     }
 
@@ -26,11 +25,11 @@ class Plotly extends React.Component {
                     data={[
                         {type: 'scatter',
                          mode: 'lines',
-                         x : [],
-                         y:[],
+                         x : this.state.data.dates,
+                         y: this.state.data.values,
                          marker: {color:'blue'}}
                     ]}
-                    layout ={{width: 1100 , height: 800, title: 'hjgvjhkgvhvjfuj'}}
+                    layout ={{width: 1100 , height: 800, title: 'FRED ECONOMIC DATA'}}
                     />
 
             </div>

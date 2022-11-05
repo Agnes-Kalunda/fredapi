@@ -44,27 +44,52 @@ def home():
 
 
 @app.get("/series")
-def fredData(series_id: str):
+def fredData():
     data =requests.get(callback_url).json()['observations'] 
 
     # return data
     # print(data)
-    array1 = [] 
-    array1=(data)
 
 
-    array2 = [] 
 
 
-    for x in array1:
-        array1 = (x ['value'] , x['date'])
-        print(array1)
+    dates = []
+    values = []
 
-        array2 = array1
-    # for i in range(len(array1)):
-    #     print (array1[i])
+    for i in data:
+        dates.append(i["date"])
+        values.append(i['value'])
     
-    return array2
+    return {"dates" : dates, "values" : values}
+
+
+
+
+
+
+
+
+
+
+
+
+    # array1 = [] 
+    # array1=(data)
+
+
+
+    # for x in array1:
+    #     array1 = (x ['value'] , x['date'])
+    #     print(array1)
+
+
+
+    # # for i in range(len(array1)):
+    # #     print (array1[i])
+    
+    # return data
+
+
 
 
 # #gets specific values from callback_url
